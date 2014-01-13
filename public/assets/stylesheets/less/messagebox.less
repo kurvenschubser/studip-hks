@@ -1,0 +1,119 @@
+/* --- MessageBoxes --------------------------------------------------------- */
+div.messagebox {
+    background: no-repeat 10px 10px;
+    border: 1px solid;
+    border-radius: 3px;
+    font-size: 12pt;
+    font-weight: bold;
+    margin: 5px;
+    padding: 15px 15px 15px 55px;
+    position: relative;
+    text-align: left;
+
+    .messagebox_buttons {
+        position: absolute;
+        right: 3px;
+        top: 3px;
+
+        a {
+            background: transparent no-repeat center center;
+            display: inline-block;
+            margin: 1px;
+            .size(16px, 16px);
+
+            &.close, &.details {
+                span { display: none; }
+            }
+            &.close   { background-image: url("@{image-path}/messagebox/cross_inv.png"); }
+            &.details { background-image: url("@{image-path}/messagebox/minimize_inv.png"); }
+        }
+    }
+
+    &.details_hidden {
+        .messagebox_buttons a.details { background-image: url("@{image-path}/messagebox/maximize_inv.png"); }
+        .messagebox_details { height: 0; }
+    }
+}
+
+div.messagebox_details {
+    font-weight: normal;
+    overflow: hidden;
+}
+
+// Messagebox definitions
+
+.messagebox (@name, @color, @background-color) {
+  .messagebox (@name, @color, @background-color, @color, @name);
+}
+
+.messagebox (@name, @color, @background-color, @border-color) {
+  .messagebox (@name, @color, @background-color, @border-color, @name);
+}
+
+.messagebox (@name, @color, @background-color, @border-color, @image) {
+    // Also generates the neccessary selector not only the rules
+    div.messagebox_@{name} {
+        color: @color;
+        background-color: @background-color;
+        background-image: url("@{image-path}/messagebox/@{image}.png");
+        border-color: @border-color;
+    }
+}
+
+.messagebox(info,      #000,    #d8e3fc, #b6c1da);
+.messagebox(success,   #000,    #dcf1da, #bad0b8);
+.messagebox(error,     #000,    #ffdddc, #ddbbba);
+.messagebox(exception, #d8000c, #ffbaba, #ddbbba);
+.messagebox(warning,   #b06500, #f7e98e, #d5c76c, "advice");
+
+// Define modal messagebox
+.modaloverlay {
+    background: fade(#000000, 50%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+
+    text-align: center;
+    &:before { // see http://css-tricks.com/centering-in-the-unknown/
+        content: "";
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        zoom: 1; // IE :(
+    }
+
+    .messagebox {
+        display: inline-block;
+        zoom: 1; // IE :(
+        .box-sizing(border-box);
+//        position: relative;
+        vertical-align: middle;
+        margin: auto;
+
+        position: relative;
+        max-height: 50%;
+        max-width: 50%;
+        width: 50%;
+
+        color: #000;
+        background-color: #f3e180;
+        background-image: url("@{image-path}/messagebox/question.png");
+        .box-shadow(8px 8px 0 fade(#000, 50%));
+
+        .content {
+            max-height: 200px;
+            overflow: auto;
+            text-align: left;
+        }
+        .buttons {
+            margin-top: 1em;
+            text-align: center;
+        }
+    }
+}
+
+// Specific adjustments
+#index .messagebox { margin: 5px 0; }

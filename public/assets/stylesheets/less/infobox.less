@@ -1,0 +1,27 @@
+/* --- Infobox -------------------------------------------------------------- */
+#infobox_content {
+    width: 100%;
+}
+table.infobox td {
+    background-color: @light-gray-color-20;
+    text-align: left;
+}
+
+// prevent line box gap, see https://developer.mozilla.org/en/Images%2c_Tables%2c_and_Mysterious_Gaps
+table.infobox td.infobox-img {
+    background-color: white;
+}
+.infobox-img > div {
+    min-height: 108px;
+    width: 250px; 
+    border-top-left-radius: 16px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+td.infoboxrahmen {
+    background-color: #dee2e8;
+    border-bottom: 1px solid fadeout(@brand-color-lighter, 80%);
+}
+

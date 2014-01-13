@@ -1,0 +1,92 @@
+div.clear
+{
+    clear: both;
+    visibility: hidden;
+}
+
+// Common styles for both tab sets
+#tabs, #tabs2 {
+    float: left;
+    line-height: 18pt;
+    margin: 0;
+
+    ul, li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    li { float: left; }
+    a {
+        color: #000;
+        font-weight: bold;
+    }
+}
+
+// Main tab set with the tabs sitting on top of the main content
+#tabs {
+    padding: 0 2px 0 0;
+
+    span { padding: 0; }
+    .quiet img { opacity: 0.25; }
+
+    li {
+        background-color: @content-color;
+        border-right: 1px solid #1e3e70;
+        border-bottom: 1px solid #1e3e70;
+        .border-radius(2px 2px 0 0);
+
+        &:last-child { border-right: none; }
+        &:hover { background: #7890bc; }
+
+        &.current {
+            border-bottom: 1px solid #fff;
+            &, &:hover { #gradient > .vertical(#eee, #fff); }
+            a, span.quiet { color: #000; }
+        }
+    }
+    a, span.quiet {
+        color: #fff;
+        display: block;
+        padding-left: 1.3em;
+        padding-right: 1.3em;
+        white-space: nowrap;
+    }
+}
+
+// Secondary tab set with the tabs being displayed as a horizontal list
+// inside the main content
+#tabs2 {
+    background: #fff;
+    .border-radius(0 2px 0 0);
+    clear: both;
+    padding: 4px 0 4px 0;
+    width: 100%;
+
+    a, span.quiet {
+        color: #6e6e6e;
+        display: block;
+
+        background: no-repeat left center;
+        .retina-background-icon("grey/arr_1right.png");
+
+        line-height: 20pt;
+        margin-left: 1em;
+        padding-left: 20px;
+    }
+
+    li:hover a {
+        .retina-background-icon("black/arr_1right.png");
+    }
+    li.current a {
+        .retina-background-icon("red/arr_1down.png");
+    }
+
+    a:hover, li:hover a, li.current a { color: #000; }
+}
+
+.tab-icon {
+    float: left;
+    margin: 4px 5px 0 -0.5em;
+    .size(16px, 16px);
+}
+

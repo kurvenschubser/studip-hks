@@ -1,0 +1,240 @@
+/*******************************************************************************
+    Druck-Stylesheet für Stud.IP
+    - nur pt Größenangaben verwenden
+    - auf background-colors verzichten (werden nicht gedruckt)
+*******************************************************************************/
+html, body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: none;
+    height: auto;
+}
+
+body, input, textarea, td, th, blockquote, p, form, ul, h4 {
+    font-size: 10pt;
+}
+
+#layout_wrapper {
+    display: block;
+}
+#layout_content {
+    margin-right: 0;
+}
+
+#header *, #barTopMenu, #barTopTools, #barTopStudip, #barBottomLeft,
+#barBottommiddle, #barBottomright, #barBottomshadow, #tabs, #tabs2,
+#layout_infobox, td.infoboxrahmen, td.infobox, td.infobox-img,
+#schedule_icons, #edit_inst_entry, #layout_sidebar, #barBottomContainer,
+.messagebox_buttons a.close, a.button, button.button {
+    display: none !important;
+}
+
+img {
+    border: 0;
+}
+
+a, a:link, a:visited {
+    color: #000000;
+}
+
+a:visited, a:link, a:hover, a:active {
+    text-decoration: none;
+}
+
+h1, .topic {
+    font-size: 15pt;
+    margin: 3pt 0 2pt 0;
+}
+
+h2 {
+    font-size: 13pt;
+}
+
+h3 {
+    font-size: 12pt;
+}
+
+td.angemeldet {
+    border: 1pt solid #000000;
+}
+
+td.rahmen_white {
+    border: 1pt solid #000000;
+    background: #FFFFFF none;
+}
+
+td.rahmen_steel {
+    border: 1pt solid #000000;
+    background-color: #f3f5f8;
+}
+
+td.rahmen_table_row_odd {
+    border: 1pt solid #000000;
+    background-color: #ebebeb;
+}
+
+.hidden {
+    display: none;
+}
+
+/* --- stud.ip-title oben  -------------------------------------------------- */
+div#barTopFont {
+    font-weight: normal;
+    display: block !important;
+    font-size: 18pt;
+    padding: 0 0 2pt 0;
+    margin: 0 0 5pt 0;
+    border-bottom: 1pt solid #000000;
+
+}
+
+/* --- studip-logo im footer ------------------------------------------------ */
+div#layout_footer * {
+    display: none;
+}
+
+div#layout_footer {
+    width: 100%;
+    text-align: center;
+    padding: 2pt 0 0 0;
+    margin: 5pt 0 0 0;
+    border-top: 1pt solid #000000;
+}
+
+div#layout_footer:after {
+    content: url('../images/logos/logo2b.gif');
+}
+
+/* --- print-style for calendar api------------------------------------------ */
+#schedule {
+    width: 100%;
+    height: 100%;
+}
+
+#schedule_headings {
+    margin-left: 41pt;
+    background: none;
+}
+
+table.schedule_headings td {
+    background: none;
+}
+
+div.schedule_day {
+    border-right: 1pt solid black;
+    position: relative;
+}
+
+div.schedule_entry {
+    position: absolute;
+    margin: 0;
+    padding: 0 0 2pt;
+    overflow: hidden;
+    font-size: 11pt;
+    color: #000000;
+}
+
+div.schedule_entry dl {
+    height: 100%;
+    margin: 0;
+    color: black ! important;
+    background-image: none ! important;
+}
+
+div.schedule_entry dl.hover:hover {
+    opacity: 1;
+}
+
+div.schedule_entry dl dd {
+    margin: 0;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+div.schedule_entry dl dt {
+    background-color: transparent ! important;
+}
+
+div.schedule_entry dl a:hover {
+    text-decoration: underline;
+}
+
+div.snatch {
+    position: absolute;
+    bottom: 4pt;
+    text-align: center;
+    width: 100%;
+    cursor: ns-resize;
+    padding-bottom: 2pt;
+}
+
+#new_entry {
+    position: absolute;
+    border: 2pt solid #E0E0F0;
+    width: 400pt;
+    height: 230pt;
+    background-color: #E8EEF7;
+    font-size: 12pt;
+}
+
+div.new_entry {
+    position: absolute;
+    left: 50%;
+    top: 180pt;
+    margin-left: -25%;
+    height: 320pt;
+    width: 50%;
+    font-size: 12pt;
+    background-color: #E8EEF7;
+    border: 2pt solid #E0E0F0;
+}
+
+div.window_heading {
+    font-weight: bold;
+    text-align: center;
+    background-color: #899ab9;
+    color: #FFF;
+    cursor: move;
+    padding: 2pt;
+}
+
+/* aus style.css */
+h1.content, h2.content, h3.content { color:#24437c; }
+hr.content {
+  margin:0 1em;
+  background-color:#555555;
+  border-radius:5px;
+  height:1px;
+  border:none;
+}
+table.content { border-collapse:collapse; }
+table.content td {
+  border:thin solid #666666;
+  font-size:smaller;
+  padding:3px;
+}
+div.content {
+  background-color:#f3f5f8;
+  clear:both;
+  margin:0;
+  overflow:hidden;
+  padding:2px;
+}
+.quote {
+  background:#eeeeee none;
+  border:1px solid black;
+  margin-left:20px;
+  margin-right:20px;
+  padding:3px;
+}
+td.quote {
+  border:1px solid #000000;
+  font-size:8px;
+}
+a.link-intern {
+  padding-left:18px;
+  background:url("../images/icons/16/blue/link-intern.png") no-repeat;
+}
+a.link-extern {
+  padding-left:18px;
+  background:url("../images/icons/16/blue/link-extern.png") no-repeat;
+}

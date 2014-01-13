@@ -1,0 +1,106 @@
+compress: true
+javascripts:
+  jquery: &jquery
+    - javascripts/jquery/jquery-1.8.2.js
+    - javascripts/jquery/jquery-ui-1.9.1.custom.js
+    - javascripts/jquery/jquery.metadata.js
+    - javascripts/jquery/jquery.placehold-0.3.js
+    - javascripts/jquery/jquery-ui-timepicker-1.1.1.js
+    - javascripts/jquery/validator.js
+
+  modernizr: &modernizr
+    - javascripts/vendor/modernizr.js
+
+  header: &header
+    - javascripts/vendor/notificon.js
+    - javascripts/header.js
+    - javascripts/personal_notifications.js
+
+  toolbar: &toolbar
+    - javascripts/toolbar.js
+    - javascripts/toolbar-buttonset.js
+    - javascripts/smiley-picker.js
+
+  wysiwyg: &wysiwyg
+    - javascripts/jquery/jquery.autosize-min.js
+    - javascripts/jquery/jquery.fileupload.js
+    - javascripts/jquery/jquery.iframe-transport.js
+    - javascripts/ckeditor/ckeditor.js
+    - javascripts/wysiwyg.js
+
+  base:
+    - *jquery
+    - *modernizr
+    - javascripts/lodash.underscore-1.3.1.js
+    - javascripts/l10n.js
+    - javascripts/init.js
+    - javascripts/ajax_notifications.js
+    - javascripts/url_helper.js
+    - javascripts/updater.js
+    - javascripts/study_area_selection.js
+    - javascripts/dialog_box.js
+    - javascripts/file_system.js
+    - javascripts/arbeitsgruppen.js
+    - javascripts/news.js
+    - javascripts/markup.js
+    - javascripts/termine.js
+    - javascripts/quick_search.js
+    - javascripts/multi_select.js
+    - javascripts/browse.js
+    - javascripts/tabs.js
+    - javascripts/audio.js
+    - javascripts/calendar.js
+    - javascripts/schedule.js
+    - javascripts/skip_links.js
+    - javascripts/forms.js
+    - javascripts/messaging.js
+    - javascripts/room_request_dialog.js
+    - javascripts/calendar_dialog.js
+    - javascripts/old_upload.js
+    - javascripts/drag_and_drop_upload.js
+    - javascripts/status_group.js
+    - javascripts/sem_classes.js
+    - javascripts/cronjobs.js
+    - javascripts/register.js
+    - *header
+    - *toolbar
+    - *wysiwyg
+    - javascripts/application.js
+
+  raumzeit:
+    - javascripts/raumzeit.js
+
+  smileys:
+    - javascripts/smiley.js
+
+  settings:
+    - javascripts/settings.js
+
+  tree: &tree
+    - javascripts/jquery/jstree/jquery.jstree.js
+
+  dialogs: &dialogs
+    - javascripts/dialogs.js
+
+  userfilter: &userfilter
+    - *dialogs
+    - javascripts/userfilter.js
+
+  admission:
+    - *userfilter
+    - *tree
+    - javascripts/admission.js
+
+  enrolment:
+    - javascripts/enrolment.js
+
+css:
+  base:
+    # filename : media
+    wysiwyg.css: screen, print
+    jquery-ui-1.9.1.custom.css: screen, print
+    jquery-ui-studip.css: screen, print
+    jquery-ui-timepicker-addon.css: screen, print
+    style.css:  screen
+    smiley.css: screen, print
+    print.css:  print

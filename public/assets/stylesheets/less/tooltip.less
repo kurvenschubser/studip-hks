@@ -1,0 +1,34 @@
+/* Tooltips for Stud.IP with CSS3 only -------------------------------------- */
+a.tooltip {
+    color: #222;
+    cursor: help;
+    display: inline-block;
+    outline: none;
+    position: relative;
+    text-decoration: none;
+
+    span {
+        #arrow > .bottom-border(9px, #ddd, 1px, #ccc);
+
+        #gradient > .vertical(fade(#fff, 50%), fade(#fff, 0%));
+        background-color: #ddd;
+        border: 2px solid #ccc;
+        .border-radius(4px);
+        bottom: 100%;
+        .box-shadow(0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset);
+        font-size: 10pt;
+        font-weight: normal;
+        left: 50%;
+        margin-left: -127px;
+        opacity: .95;
+        padding: 10px;
+        position: absolute;
+        text-align: left;
+        text-shadow: 0 1px 0 rgba(255,255,255,.4);
+        visibility: hidden;
+        white-space: normal;
+        width: 230px;
+        z-index: 999;
+    }
+    &:hover span { visibility: visible; }
+}

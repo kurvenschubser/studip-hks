@@ -1,0 +1,51 @@
+/*
+ * studip-mixins.less
+ *
+ * This file contains all mixins created specifically for Stud.IP
+ * while mixins.less should contain a copy of the mixins from
+ * twitter's bootstrap.
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation; either version 2 of
+ * the License, or (at your option) any later version.
+ *
+ * @author      Jan-Hendrik Willms <tleilax+studip@gmail.com>
+ * @license     http://www.gnu.org/licenses/gpl-2.0.html GPL version 2
+ * @category    Stud.IP
+ * @since       2.4
+ */
+
+// Drop shadows
+.box-shadow(@shadow1, @shadow2) {
+  -webkit-box-shadow: @shadow1, @shadow2;
+     -moz-box-shadow: @shadow1, @shadow2;
+          box-shadow: @shadow1, @shadow2;
+}
+
+// Gradients
+#gradient {
+    .horizontal-with-stop(@startColor: #555, @endColor: #333, @colorStop: 50%) {
+        background-color: @endColor;
+        background-repeat: repeat-x;
+        background-image: -webkit-linear-gradient(linear, 0 0, 100% 0, from(@startColor), color-stop(@colorStop, @endColor), to(@endColor)); // Safari 5.1+, Chrome 10+
+        background-image: -webkit-linear-gradient(left, @startColor, @endColor @colorStop, @endColor);
+        background-image: -moz-linear-gradient(left, @startColor, @endColor @colorStop, @endColor); // FF 3.6+
+        background-image: -o-linear-gradient(left, @startColor, @endColor @colorStop, @endColor); // Opera 11.10
+        background-image: linear-gradient(to right, @startColor, @endColor @colorStop, @endColor); // Standard, IE10
+    }
+}
+
+// Retina background icons
+@one: ~"1x";
+@two: ~"2x";
+
+.retina-background-image(@image0, @image1) {
+    background-image: url("@{image-path}/@{image0}");
+    background-image: -webkit-image-set(
+        url("@{image-path}/@{image0}") @one,
+        url("@{image-path}/@{image1}") @two);
+}
+.retina-background-icon(@icon) {
+    .retina-background-image("/icons/16/@{icon}", "/icons/32/@{icon}");
+}

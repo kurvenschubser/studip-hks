@@ -1,0 +1,524 @@
+/*******************************************************************************
+  Standard-Stylesheet für Stud.IP im Safire-Design
+  - use http://www.colorzilla.com/gradient-editor/ for gradients
+*******************************************************************************/
+
+@font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+
+@image-path: "../images";
+@icon-path: "@{image-path}/icons/16";
+
+@import "mixins.less";
+
+@import "less/links.less";
+@import "less/tables.less";
+@import "less/forms.less";
+@import "less/content.less";
+
+@import "less/layouts.less";
+@import "less/header.less";
+@import "less/navigation.less";
+@import "less/infobox.less";
+@import "less/content_box.less";
+@import "less/badges.less";
+
+@import "less/ajax.less";
+@import "less/autocomplete.less";
+@import "less/avatar.less";
+@import "less/buttons.less";
+@import "less/messagebox.less";
+@import "less/quicksearch.less";
+@import "less/skiplinks.less";
+@import "less/tabs.less";
+@import "less/tooltip.less";
+
+@import "less/admin.less";
+@import "less/archiv.less";
+@import "less/calendar.less";
+@import "less/contacts.less";
+@import "less/cronjobs.less";
+@import "less/evaluation.less";
+@import "less/news.less";
+@import "less/schedule.less";
+@import "less/study-area-selection.less";
+@import "less/wiki.less";
+@import "less/raumzeit.less";
+@import "less/opengraph.less";
+
+@import "less/mobile.less";
+@import "less/pagination.less";
+@import "less/admission.less";
+@import "less/enrolment.less";
+
+/* --- Schrift (Vorgaben: Typ, Größe, Farbe) -------------------------------- */
+body, input, textarea {
+    color: #000;
+    font-family: @font-family;
+    font-size: 10pt;
+}
+
+/* --- Standardvorgaben ----------------------------------------------------- */
+//TODO: the Body-Background color should be similar to A:link.toolbar and A:visited.toolbar for best effect!!
+html, body { height: 100%; }
+html { overflow-y: scroll; }
+body {
+    #gradient > .vertical(@brand-color-light, @brand-color-darker);
+    background-color: @brand-color-darker;
+    background-repeat: repeat-x;
+    margin: 0;
+}
+
+/* --- Überschriften -------------------------------------------------------- */
+
+h1, h2, h3 { font-weight: normal; }
+h1,h2,h3,h4,h5,h6 {
+    color: #444444;
+    border-bottom: 2px solid rgba(0,0,0,0.2);
+    width: 80%;
+}
+h1 {
+    margin-top: 0px;
+    font-size: 2em;
+    padding-left: 10px;
+}
+h2 {
+    font-size: 1.7em;
+}
+h3 {
+    font-size: 1.4em;
+}
+h4 {
+    font-size: 1.1em;
+}
+h3,h4,h5,h6 {
+    border-bottom: none;
+}
+ul + br, table + br {
+    display: none;
+}
+
+blockquote {
+    border-left: 3px solid @brand-color-lighter;
+    padding: 5px;
+    margin: 8px;
+    padding-left: 8px;
+    margin-left: 0px;
+    background-color: rgba(0,0,0,0.05);
+    > .author {
+    	background-color: @brand-color-lighter;
+        padding: 4px;
+        margin-left: -10px;
+        padding-left: 15px;
+        margin-right: -5px;
+        color: white;
+        margin-top: -5px;
+        margin-bottom: 5px;
+    }
+}
+
+dd { margin-left: 1.5em; }
+
+input.placeholder { opacity: 0.7; }
+.placeholder(rgba(0, 0, 0, 0.7));
+
+table.content {
+    border-collapse: collapse;
+
+    td {
+        border: thin solid #666;
+        font-size: smaller;
+        padding: 3px;
+    }
+}
+
+div.indent { margin-left: 2em; }
+
+h1.topic, h2.topic, h3.topic {
+    font-weight: bold;
+    line-height: 1em;
+    margin-bottom: 0.1em;
+    margin-top: 0.1em;
+    padding: 0.1em;
+}
+h1.topic { font-size: 1.6em; }
+h2.topic, h3.topic { font-size: 1.2em; }
+
+/* --- media preview -------------------------------------------------------- */
+.preview {
+    img, audio, video {
+        max-height: 500px;
+        max-width: 750px;
+    }
+}
+
+.mainmenu {
+    margin-top: 7px;
+    text-align: left;
+    font-size: 16px;
+    padding: 5px;
+}
+
+/* --- StudipForm selectbox control------------------------------------------ */
+div.selectbox {
+    background-color:#ffffff;
+    border:1px solid;
+    margin-top:5px;
+    margin-bottom:5px;
+    padding:5px;
+    max-height:200px;
+    overflow:auto;
+}
+
+div.selectbox fieldset {
+    border:none;
+    margin:0px;
+    padding:0px;
+}
+
+.minor {
+    color: gray;
+    font-size: 0.75em;
+}
+.quiet { color: gray; }
+
+.middle      { vertical-align: middle; }
+.text-bottom { vertical-align: text-bottom; }
+.text-top    { vertical-align: text-top !important; }
+
+/* --- index.php anpassungen an den boxen zur vereinheitlichung ------------- */
+div.index_container { margin: 0; }
+
+table.index_box {
+    border-collapse: collapse;
+    margin-bottom: 1em;
+    width: 100%;
+}
+
+td.index_box_cell {
+    background-color: #f3f5f8;
+    padding: 4px;
+}
+
+/* overdiv */
+div.overdiv {
+    background-color: #f3f5f8;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 600px;
+    z-index: 2;
+
+    .title { margin: 0; }
+    a.title {
+        padding: 2px;
+        float: right;
+    }
+    div.title {
+        background: @brand-color-lighter;
+        height: 1.4em;
+        padding: 0;
+    }
+    h4.title {
+        color: #fff;
+        float: left;
+        font-size: 1em;
+        overflow: hidden;
+        padding: 2px;
+        width: 90%;
+    }
+
+    div.content {
+        background-color: #f3f5f8;
+        clear: both;
+        margin: 0;
+        overflow: hidden;
+        padding: 2px;
+    }
+}
+
+/* --- Editor Toolbar ------------------------------------------------------- */
+.add_toolbar {
+    .box-sizing(border-box);
+}
+.editor_toolbar {
+    display: inline-block;
+    font-size: 0.75em;
+    position: relative;
+
+    .buttons {
+        .clearfix();
+        margin: 0 !important;  // Locked since .buttons is pretty generic
+        padding: 0 !important; // and other styles could easily interfere
+
+        position: absolute;    // Stretch the buttons above the element
+        left: 0;
+        right: 0;
+        top: 0;
+
+        border-spacing: 0; // Chrome needs this
+
+        .left  { float: left; }
+        .right { float: right; }
+
+        .ui-button {
+            .border-radius(4px);
+            line-height: 1em;
+        }
+    }
+}
+
+/* --- Plugin Administration ------------------------------------------------ */
+.plugin_image {
+    text-align: center;
+    width: 88px;
+}
+
+.plugin_score   { white-space: nowrap; }
+.plugin_install { text-align: center; }
+
+img.plugin_preview {
+    height: 60px;
+    width: 80px;
+}
+
+/* --- User Administration -------------------------------------------------- */
+
+.user_form { width: 250px; }
+
+/* --- Veranstaltungsverwaltung --------------------------------------------- */
+.click_me {
+    div {
+        background-color: #f3f5f8;
+        border: 1px solid #D0D0D0;
+        float: left;
+        height: 10em;
+        margin: 0.5em;
+        overflow: hidden;
+        padding: 1em;
+        min-width: 21.5em;
+        max-width: 21.5em;
+        width: 21.5em;
+
+        &:hover {
+            background-color: #F2F2F2;
+            border: 1px solid #A4A4A4;
+            float: left;
+            margin: 0.5em;
+            padding: 1em;
+
+            p { color: #000; }
+        }
+    }
+    p { color: #666; }
+}
+
+.click_head { font-size: 2em; }
+
+.smashbox_kategorie {
+    font-weight: bold;
+    font-size: 2em;
+    margin: 0;
+    width: 90%;
+}
+
+.smashbox_stripe {
+    background: url("@{image-path}/background_stripes.jpg") repeat-x;
+    border-top: 1px solid #D0D0D0;
+}
+
+/* --- textarea resizer ----------------------------------------------------- */
+.ui-resizable-handle.ui-resizable-s {
+    background: #eee url("@{image-path}/vendor/handle_background.png") no-repeat center;
+    bottom: 0;
+    cursor: s-resize;
+    height: 12px;
+}
+
+/* --- general style classes ------------------------------------------------ */
+.arrow_down {
+    background: transparent url("@{icon-path}/blue/arr_1down.png") top left no-repeat !important;
+    background-position: 0 0 !important;
+}
+.arrow_right {
+    background: transparent url("@{icon-path}/blue/arr_1right.png") top left no-repeat !important;
+    background-position: 0 0 !important;
+}
+h1:hover, h2:hover, h3:hover, h4:hover {
+    .arrow_down  { background-image: url("@{icon-path}/red/arr_1down.png"); }
+    .arrow_right { background-image: url("@{icon-path}/red/arr_1right.png"); }
+}
+
+.invalid { border: 2px dotted red; } // an invalid form entry
+.invalid_message {
+    display: none;
+    font-weight: bold;
+    color: red;
+}
+.invisible { display: none; }
+.no-break { white-space: nowrap; }
+
+/* classes for the news modules in Stud.IP ---------------------------------- */
+.news_item { margin: 3px; }
+
+/* error message */
+.error {
+    background-color: #fcc;
+    border: 1px solid #fcc;
+    color: #000;
+    display: none;
+    font-size: 11px;
+    height: 15px;
+    padding: 4px 10px;
+
+    p { margin: 0; }
+    div.arrow {
+        border: 10px solid;
+        border-color: transparent transparent #FCC transparent;
+        height: 0;
+        left: 60px;
+        position: absolute;
+        top: -18px;
+        width: 0;
+    }
+}
+
+.setting_info {
+    font-size: 0.9em;
+    font-style: italic;
+    text-align: right;
+    color: #444;
+}
+
+img.bookable_rooms_action { display: none; }
+
+
+.code_header {
+    text-transform: uppercase;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 3px;
+    background: #eee none;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+
+    font-weight: bold;
+}
+
+code.code_content {
+    overflow: auto;
+    display: block;
+    white-space: nowrap;
+    max-height: 500px;
+
+    background: #eee none;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 3px;
+}
+
+
+.semtree li {
+    font-weight: bold;
+    list-style: none;
+    padding-bottom: 5px;
+}
+
+/* descriptional texts */
+p.info {
+    padding: 10px;
+    margin: 0;
+}
+
+.draggable        { margin-top: 4px; }
+.draggable_folder { margin-bottom: 3px; }
+
+/* --- institute administration ------------------------------------------- */
+.admin-institute {
+    input[type=text], input[type=tel], input[type=url], input[type=email], select:first-child {
+        .box-sizing(border-box);
+        width: 98%;
+    }
+}
+
+/* --- info text neu lecture --------------------------------------------- */
+div.info { padding-left: 1%; }
+
+/* --- rating --- */
+.printhead .rating img { padding: 0; }
+
+/* --- online list --- */
+.online-list {
+    img {
+        vertical-align: text-top;
+    }
+    td[colspan="4"] {
+        text-align: center;
+    }
+}
+.online-list-double {
+    .clearfix;
+    table {
+        float: right;
+        width: 49.5%;
+        &:first-child {
+            float: left;
+        }
+    }
+}
+.online-config {
+    &, li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        .clearfix;
+    }
+    li:first-child {
+        margin-bottom: 0.5em;
+    }
+    a {
+        float: left;
+        width: 20px;
+    }
+    span {
+        display: block;
+        margin-left: 20px;
+    }
+}
+
+/* Simple Content Module */
+.scm {
+    // Workaround for :last-child which is not supported by IE8
+    .content_title {
+        td {
+            text-align: right;
+            white-space: nowrap;
+            &:first-child {
+                text-align: left;
+                white-space: normal;
+            }
+        }
+        input[type=text] {
+            width: 200px;
+        }
+    }
+    .content_body {
+        td {
+            padding: 22px;
+        }
+        textarea {
+            height: 200px;
+            width: 100%;
+            resize: vertical;
+        }
+    }
+    .table_footer td {
+        text-align: center;
+    }
+}

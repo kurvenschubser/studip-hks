@@ -1,0 +1,328 @@
+/* --- header.css ----------------------------------------------------------- */
+#wrap2 {
+    position: absolute;
+    top: 150px;
+}
+
+#barBottom {
+    background-color: @brand-color-lighter;
+    left: 0;
+    position: absolute;
+    top: 100px;
+}
+
+#barBottomContainer {
+    background-color: @brand-color-lighter;
+    border: 1px #1e3e70;
+//    border-top-style: solid;
+    border-bottom-style: solid;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.3);
+    height: 24px;
+    margin-bottom: 5px;
+    position: relative;
+    width: 100%;
+}
+
+.fixed {
+    #header {
+        border-bottom: 1px solid #000;
+        margin-top: 24px;
+        margin-bottom: 5px;
+    }
+    #barBottomContainer {
+        position: fixed;
+        top: 0px;
+        z-index: 10000;
+    }
+}
+
+#barBottomLeft, #barBottommiddle, #barBottomright {
+    background-color: @brand-color-lighter;
+    color: #fff;
+    height: 24px;
+    line-height: 24px;
+    padding: 0;
+    vertical-align: middle;
+}
+
+#barBottomLeft {
+    float: left;
+    padding-left: 15px;
+    padding-right: 15px;
+    white-space: nowrap;
+
+    // Adds an arrow at the end
+    #arrow > .right(12px, @brand-color-lighter, 0);
+    z-index: 2;
+}
+
+#barBottommiddle {
+    font-weight: bold;
+    overflow: hidden;
+    padding-left: 30px;
+    z-index: 1;
+
+    &:before {
+        // Adds the fading background to the left
+        #gradient > .horizontal(@brand-color-light, @brand-color-lighter);
+        content: "";
+        position: absolute;
+        height: 100%;
+        margin-left: -30px;
+        width: 25px;
+    }
+}
+
+#barBottomright {
+    position: absolute;
+    top: 0;
+    right: 0;
+    white-space: nowrap;
+
+    &:before {
+        #gradient > .horizontal(fadeout(@brand-color-lighter, 100%), @brand-color-lighter);
+        background-color: fadeout(@brand-color-lighter, 100%);
+        content: "";
+        left: -40px;
+        height: 24px;
+        position: absolute;
+        width: 40px;
+    }
+
+    ul { padding-left: 0; }
+}
+
+#barBottomright, #layout_footer {
+    a {
+        color: #dfdfdf;
+        margin: 0 6px;
+        text-decoration: none;
+
+        &:hover { color: #fff; }
+    }
+    ul { 
+        margin: 0;
+        float: right;
+    }
+    li {
+        display: inline-block;
+        height: 24px;
+        line-height: 24px;
+        list-style-type: none;
+        vertical-align: text-bottom;
+    }
+}
+
+// "Generic" (for elements in #barBottomright) list style
+#barBottomright {
+    li {
+        position: relative;  // So the list can be properly aligned
+        &:hover .list {
+            display: block;
+            .item { opacity: 1; }
+        }
+        &.active > a {
+            color: #fff;
+            font-weight: bold;
+        }
+    }
+    .list {
+        // Creates an arrow pointing from the list to the triggering element
+        #arrow > .top(10px, #eee);
+
+        @width: 400px;
+        @arrow-height: 10px;
+
+        background-color: #eeeeee;
+        border: thin solid #666;
+        border-collapse: collapse;
+        .border-radius(3px);
+        color: #333333;
+        display: none;
+        font-size: 1em;
+        position: absolute;
+        width: @width;
+        max-width: @width;
+        padding: 4px;
+        .box-shadow(0 0 8px rgba(0, 0, 0, 0.5));
+        
+
+        // Without this, buttons or message boxes would appear on top of the list
+        z-index: 2;
+
+        // Insert invisible padding on top of the arrow in order to try to
+        // close the "mouse trap gap" created by the arrow
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -@arrow-height;
+            left: 0;
+            right: 0;
+            height: @arrow-height;
+            opacity: 0;
+        }
+
+        // Positions: below or left'ish or right'ish to the triggering element
+        &.below {
+            left: -(@width / 2 - 9);
+            &:before {
+                left: 50%;
+            }
+        }
+        &.left {
+            right: 0px;
+            &:before {
+                left: auto; 
+                right: 4px;
+            }
+        }
+        &.right {
+            left: 0px;
+            &:before { left: 4px; }
+        }
+
+        // List item
+        .item {
+            @padding: 4px;
+            .clearfix();
+            border-top: thin solid #333;
+            line-height: 20px;
+            display: block;
+            height: auto;
+            opacity: 0;
+            .transition(~"background-color 0.5s, opacity 0.8s");
+            padding-top: @padding;
+            padding-bottom: @padding;
+            white-space: normal;
+            
+            &:hover { background-color: #ffffff; }
+
+            // First child: no top-border and but rounded corners
+            &:first-child {
+                border-top: 0;
+                .border-top-radius(5px);
+            }
+            // Last child: rounded corners
+            &:last-child { .border-bottom-radius(5px); }
+        }
+
+        a {
+            color: @brand-color-dark;
+            display: block;
+            padding: 0px;
+            &:hover { color: @active-color; }
+        }
+
+        .options {
+            cursor: pointer;
+            float: right;
+            padding-top: 4px;
+            > img {
+                vertical-align: top;
+            }
+
+            &.hidden { visibility: hidden; }
+        }
+        .item:hover .options.hidden { visibility: visible; }
+    }
+}
+
+#notification_marker {
+    .border-radius(2px);
+    .transition(all 1s);
+    width: 18px;
+    margin-top: 3px;
+    height: 16px;
+    font-size: 0.8em;
+    border: thin solid #cccccc;
+    color: #cccccc;
+    text-align: center;
+    line-height: 17px;
+    vertical-align: text-bottom;
+    background-color: @brand-color-lighter;
+    
+    &.alert {
+        border: thin solid white;
+        background-color: @public_course_bgcolor;
+        font-weight: bold;
+        color: white;
+    }
+}
+
+#notification_container {
+    .avatar {
+        float: left;
+        margin-right: 10px;
+        margin-left: 0px;
+        background-position: center center;
+        background-size: 100%;
+        width: 40px;
+        height: 40px;
+    }
+    .list, li&:hover .list { display: none; }
+    &.hoverable:hover {
+        .list { display: block; }
+    }
+    #notification_list {
+        ul {
+            width: 100%;
+        }
+        .more {
+            font-size: 0.8em;
+            font-weight: bold;
+            text-align: center;
+        }
+    }
+}
+#barTopFont {
+    color: #cccccc;
+    font-size: 16pt;
+    left: 15px;
+    position: absolute;
+    top: 10px;
+}
+
+#barTopStudip {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    &, img { border: none; }
+}
+
+#barTopLogo {
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+
+#header {
+    height: 100px;
+}
+
+#flex-header {
+    #gradient > .vertical(@brand-color-darker, @brand-color-light);
+    position: relative;
+}
+
+/* --- public course marker ------------------------------------------------ */
+#barBottomContainer.public_course {
+
+    background-color: @public_course_bgcolor;
+
+    #barBottommiddle, #barBottomright, #barBottomLeft {
+        background-color: @public_course_bgcolor;
+    }
+    #barBottomLeft {
+        // Adds an arrow at the end
+        #arrow > .right(12px, @public_course_bgcolor, 0);
+    }
+    #barBottommiddle:before { 
+        // Adds the fading background to the left
+        #gradient > .horizontal(darken(@public_course_bgcolor, 10%), @public_course_bgcolor);
+    }
+    #barBottomright:before {
+        #gradient > .horizontal(fadeout(@public_course_bgcolor, 100%), @public_course_bgcolor);
+        background-color: fadeout(@public_course_bgcolor, 100%);
+    }
+}

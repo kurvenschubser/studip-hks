@@ -1,0 +1,574 @@
+/* --- Tabellen ------------------------------------------------------------- */
+table.header, .table_header { //normale Tabellenheader
+    background-color:  @table-header-color;
+    border-bottom: 1px solid #575757;
+    color: #000;
+    padding: 4px;
+
+}
+
+.table_header_bold { //formerly known as topic(-header)
+    background-color: @brand-color-lighter;
+	border-color: @brand-color-darker;
+	border-style: solid;
+	border-width: 0 0 1px 0;
+    color: #FFFFFF;
+    font-size: 12pt;
+    padding: 3px 5px;
+
+    img { vertical-align: middle; } // for the topic-icons
+}
+
+
+table.links1 { background-color: #fff; }
+table.logintable { 
+    background-image: url("@{image-path}/login.jpg");
+    h1 {
+        border-bottom: 0;
+    }
+}
+
+
+.gradient-bar(@flow-content: true) {
+    #gradient > .vertical-three-colors(#cdd9ed, #e3eaf6, 40%, #e3eaf6);
+    border-top: 1px solid @brand-color-lighter;
+    line-height: 17pt;
+    height: 25px;
+}
+.gradient-bar(@flow-content: true) when (@flow-content) {
+    &:last-child { padding-right: 5px; }
+
+    img {
+        padding: 0 2px;
+        vertical-align: text-bottom;
+    }
+}
+
+table.toolbar {
+  .gradient-bar(false);
+}
+td.toolbar, td.printhead {
+  .gradient-bar();
+}
+
+td {
+    &.aufklapp { background-color: #fffaee; }
+    &.angemeldet { border: 1px solid #000; }
+    &.indexpage {
+        background: white url("@{image-path}/indexpage.jpg") no-repeat;
+        text-align: left;
+    }
+    &.nix { background-color: transparent; }
+    &.quote {
+        border: 1px solid #000;
+        font-size: 8px;
+    }
+    &.rahmen_steel {
+        background-color: #f3f5f8;
+        border: 1px solid #000;
+    }
+    &.rahmen_table_row_odd {
+        background-color: @content-color-20;
+        border: 1px solid #000;
+    }
+    &.rahmen_white {
+        background: #fff;
+        border: 1px solid #000;
+    }
+    &.table_header_bold_red {
+        border: none;
+        background-color: #fdc6c6;
+        border-bottom: 1px solid #990000;
+        color: #000;
+        height: 20px;
+    }
+}
+
+table.blank, td.blank, td.onlineinfo, td.blanksmall {
+    background-color: #fff;
+}
+
+td.tree-indent img {
+    vertical-align: bottom;
+}
+
+td.tree-elbow-line {
+    background: url("@{image-path}/datatree_1.gif") repeat-y;
+    vertical-align: bottom;
+    width: 5px;
+}
+
+td.tree-elbow-end {
+    vertical-align: top;
+    white-space: nowrap;
+    width: 5px;
+}
+
+td.tree-elbow-line img,
+td.tree-elbow-end img {
+    display: block;
+}
+
+/* Zebra styles for tables */
+tr.hover_odd {
+    background-color: #eeeeee;
+    &:hover { background-color: #ced8f2; }
+}
+tr.hover_even {
+    background-color: #f8f8f8;
+    &:hover { background-color: #b7c2e2; }
+}
+
+.table_row_odd { background-color: #eeeeee; }
+.table_row_even { background-color: #f8f8f8; }
+
+
+table.zebra, table.zebra-hover { // bg color alternates with tr
+    > tbody > tr {
+        background-color: @alternating-color-odd;
+        &:nth-child(2n+1) { background-color: @alternating-color-even; }
+
+        .zebra &{ // Don't insert a blank between & and { as it would lead to a wrong rule; seems to be a bug in lessc
+            background-color: @content-color-20;
+            &:nth-child(2n+1) { background-color: #f3f5f8; }
+        }
+    }
+}
+table.zebra-hover {
+    > tbody > tr:hover {
+        background-color: @alternating-highlight-color-odd;
+        &:nth-child(2n+1) { background-color: @alternating-highlight-color-even; }
+
+        .zebra &{ // See above
+            background-color: #b7c2e2;
+            &:nth-child(2n+1) { background-color: #ced8f2; }
+        }
+    }
+}
+table.zebra-big, table.zebra-big-hover { // bg color alternates with tbody
+    > tbody {
+        > tr { background-color: @alternating-color-odd; }
+        &:nth-child(2n+1) > tr { background-color: @alternating-color-even; }
+    }
+}
+table.zebra-big-hover {
+    > tbody {
+        > tr:hover { background-color: @alternating-highlight-color-odd; }
+        &:nth-child(2n+1) > tr:hover { background-color: @alternating-highlight-color-even; }
+    }
+}
+
+table.zebra-horizontal > tbody > tr > td {
+    background-color: @alternating-color-odd;
+    &:nth-child(2n+1) {
+        background-color: @alternating-color-even;
+    }
+}
+
+/* --- table.collapsable ---------------------------------------------------- */
+// TODO: This is pretty hard to understand and should be replaced with an easier,
+// better structured solution
+.collapsable {
+    .header-row > td {
+        border-bottom: 0;
+        padding-left: 0;
+    }
+
+    .toggle-indicator {
+        color: #000;
+        font-weight: bold;
+
+        a {
+            background: left center no-repeat;
+	    	background-image: url("@{image-path}/icons/16/blue/arr_1down.png"); 
+  			background-image: -webkit-image-set(
+      			url("@{image-path}/icons/16/blue/arr_1down") ~"1x",
+      			url("@{image-path}/icons/32/blue/arr_1down") ~"2x");               
+            color: #000;
+            cursor: pointer;
+        }
+    }
+    .empty .toggle-indicator a { 
+    	background-image: url("@{image-path}/icons/16/grey/arr_1right.png"); 
+  		background-image: -webkit-image-set(
+      		url("@{image-path}/icons/16/grey/arr_1right.png") ~"1x",
+      		url("@{image-path}/icons/32/grey/arr_1right.png") ~"2x");    
+ }
+    .collapsed .toggle-indicator a { background-image: url("@{image-path}/icons/16/blue/arr_1right.png"); }
+    td.label-cell, .toggle-indicator a, .empty .toggle-indicator { padding-left: 20px; }
+    > .collapsed > tr { display: none; }
+    .collapsed .header-row { display: table-row !important; }
+}
+* + html .collapsable .collapsed .header-row { display: inline-block !important; } // IE-Hack
+
+/* --- Table details -------------------------------------------------------- */
+.loaded-details {
+    > td { padding: 0 20px 5px 20px !important; }
+    table {
+        border: 1px solid #888;
+        border-top: 0;
+    }
+}
+
+/* --- Sonstige ------------------------------------------------------------- */
+.gruppe0 { background-color: #fff !important; }
+.gruppe1 { background-color: #f00 !important; }
+.gruppe2 { background-color: #f93 !important; }
+.gruppe3 { background-color: #fc6 !important; }
+.gruppe4 { background-color: #9f9 !important; }
+.gruppe5 { background-color: #6c6 !important; }
+.gruppe6 { background-color: #69c !important; }
+.gruppe7 { background-color: #669 !important; }
+.gruppe8 { background-color: #000 !important; }
+#my_seminars, #settings-notifications {
+    .gruppe0, .gruppe1, .gruppe2, .gruppe3, .gruppe4,
+    .gruppe5, .gruppe6, .gruppe7, .gruppe9 {
+        width: 1px;
+    }
+}
+
+.grey      { background: #bbb none; }
+.lightgrey { background: #f8f8f8 none; }
+.white     { background: #fff none; }
+
+.category_divider {
+    border-top: 1px solid #d0d0d0;
+    background-image: url("@{image-path}/background_stripes.jpg");
+}
+
+.blue_gradient {
+    #gradient > .vertical-three-colors(#b8c6db, #cedbef, 60%, #cedbef);
+}
+
+.red_gradient {
+    #gradient > .vertical-three-colors(#e3969a, #e8b6b9, 60%, #e8b6b9);
+    border-top: 2px solid #b35357;
+}
+
+/* --- Styles fuer printhead und printcontent ------------------------------- */
+table {
+    td.printcontent {
+        background-color: #f3f5f8;
+        text-align: left;
+    }
+    td.printcontent:hover {
+        background-color: #f3f5f8;
+    }
+    td.printhead2 {
+        background-image: url("@{image-path}/content_object_arr-right.png");
+        border-top: 1px solid @brand-color-lighter;
+        padding: 0;
+    }
+    td.printhead3 {
+        background-image: url("@{image-path}/content_object_arr-down.png");
+        border-top: 1px solid @brand-color-lighter;
+        padding: 0;
+    }
+}
+
+/* classes for sortable table headers --------------------------------------- */
+tr.sortable {
+    background-color: #f4f7f9;
+
+    th.sortasc {
+        background-repeat: no-repeat;
+        background-position: left center;
+        .retina-background-image("dreieck_up.png", "dreieck_up@2x.png");
+        padding-left: 17px;
+    }
+    th.sortdesc {
+        background-repeat: no-repeat;
+        background-position: left center;
+        .retina-background-image("dreieck_down.png", "dreieck_down@2x.png");
+        padding-left: 17px;
+    }
+}
+
+/* styles for settings tables */
+.settings {
+    border-collapse: collapse;
+    margin-bottom: 2em;
+    width: 100%;
+
+    thead th, tbody th {
+        .table_header_bold;
+        text-align: center;
+    }
+    td, th {
+        padding: 8px;
+        vertical-align: top;
+    }
+    tbody {
+        &.maxed {
+            input[type=email], input[type=password], input[type=tel], input[type=text], input[type=url], select, textarea {
+                &:first-child {
+                    .box-sizing(border-box);
+                    width: 100%;
+                }
+            }
+            td[colspan]:first-child {
+                input[type=email], input[type=password], input[type=tel], input[type=text], input[type=url], select, textarea {
+                    width: 200px;
+                }
+            }
+        }
+        &.privacy td:first-child ~ td {
+            font-style: italic;
+            text-align: center;
+        }
+        td:first-child label {
+            display: block;
+            font-weight: bold;
+        }
+    }
+    td:first-child[colspan], .divider > th, .divider > td {
+        background-color: lighten(@brand-color-lighter, 20%);
+        border-bottom: 1px solid #444;
+        border-top: 1px solid #444;
+        color: #000;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    dfn, small {
+        display: block;
+        font-weight: normal;
+    }
+    dfn {
+        font-size: 0.8em;
+        font-style: italic;
+        padding-top: 0.5em;
+    }
+    tfoot {
+        td {
+            background: @table-footer-color;
+            text-align: center;
+        }
+        tr:first-child td {
+            border-top: 1px solid #575757;
+        }
+    }
+    label.required:after {
+        color: red;
+        content:'*';
+        font-size: 1.5em;
+        padding-left: 5px;
+        vertical-align: middle;
+    }
+    &.notification tbody td {
+        text-align: center;
+        &:first-child:not([colspan]) { padding-left: 0; padding-right: 0; font-size: small; }
+        &:nth-child(-n+2) { text-align: left; }
+    }
+    .bordered {
+        &.left  { border-left: 1px solid @brand-color-lighter; }
+        &.right { border-right: 1px solid @brand-color-lighter; }
+    }
+}
+
+table.tree {
+    .header > td {
+        .gradient-bar();
+
+        a.link {
+            padding-left: 5px;
+            &.open   {
+                background: url("@{icon-path}/blue/arr_1down.png") left center no-repeat;
+                padding-left: 20px;
+            }
+            &.closed {
+                background: url("@{icon-path}/blue/arr_1right.png") left center no-repeat;
+                padding-left: 20px;
+            }
+        }
+    }
+    td.blank {
+        background: #fff;
+        border: 0;
+    }
+    td.in-between {
+        background: #fff url("@{image-path}/tree-line.gif") center repeat-y;
+        border: 0;
+    }
+    td.leaf {
+        background: #fff url("@{image-path}/tree-leaf.gif") center no-repeat;
+        border: 0;
+    }
+    td.end {
+        background: #fff url("@{image-path}/tree-end.gif") center no-repeat;
+        border: 0;
+    }
+    .centered {
+        text-align: center;
+        table { margin: auto; text-align: left; }
+    }
+}
+
+.table_footer, .table_footer td {
+    background-color: #e9e9e9;
+    border-top: 1px solid #c8c8c8;
+}
+
+// New table definition
+table.default {
+    border-collapse: collapse;
+    margin-bottom: 1em;
+    width: 100%;
+
+    th, td, caption {
+        padding: 5px;
+        text-align: left;
+    }
+    caption {
+        background-color: transparent;
+        color: #444;
+        font-size: 1.4em;
+        text-align: left;
+    }
+    thead {
+      th {
+        background-color: @content-color-20;
+        border-bottom: 1px solid fadeout(@brand-color-lighter, 80%);
+        border-top: 1px solid @brand-color-darker;
+        font-size: 1.0em;
+      }
+    }
+    tbody {
+        th {
+            background-color: @content-color-20;
+            border-top: 1px solid @brand-color-darker;
+            border-bottom: 1px solid fadeout(@brand-color-lighter, 80%);
+            text-align: left;
+        }
+        td {
+            border-bottom: 1px solid @table-header-color;
+            transition: background-color 0.3s;
+        }
+        tr:last-child td {
+            border-bottom: 1px solid @brand-color-darker;
+        }
+    }
+    // Hover effect
+    &:not(.nohover) > tbody:not(.nohover) > tr:not(.nohover):hover > td {
+        background-color: @light-gray-color-20;
+    }
+    tfoot {
+        td {
+            background-color: @content-color-20;
+            border-top: 1px solid @brand-color-darker;
+        }
+    }
+    .actions {
+        float: right;
+        text-align: right;
+        img {
+            vertical-align: middle;
+        }
+    }
+    td.actions, th.actions {
+        float: none;
+    }
+
+    tbody.toggleable {
+        &.toggled {
+            .toggle-switch {
+                .retina-background-icon("/blue/arr_1right.png");
+            }
+            tr:not(:first-child) {
+                display: none;
+            }
+        }
+        .toggle-switch {
+            .hide-text();
+            .retina-background-icon("/blue/arr_1down.png");
+            display: inline-block;
+            height: 16px;
+            text-align: center;
+            vertical-align: top;
+            width: 16px;
+        }
+    }
+
+    dfn, small {
+        display: block;
+        font-weight: normal;
+    }
+    dfn {
+        font-size: 0.8em;
+        font-style: italic;
+        padding-top: 0.5em;
+    }
+    label.required:after {
+        color: red;
+        content:'*';
+        font-size: 1.5em;
+        padding-left: 5px;
+        vertical-align: middle;
+    }
+}
+
+table.default2 {
+    border-collapse: collapse;
+    width: 100%;
+
+    th, td, caption {
+        padding: 5px;
+        text-align: left;
+    }
+    caption {
+        background-color: @brand-color-lighter;
+        border-bottom: 1px solid @brand-color-darker;
+        color: #fff;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-align: left;
+    }
+    thead {
+      th {
+        background-color: @table-header-color;
+        border-bottom: 1px solid @brand-color-darker;
+        font-size: 1.1em;
+      }
+    }
+    tbody {
+        th {
+            background-color: #cddaef;
+            border-top: 1px solid #575757;
+            border-bottom: 1px solid #575757;
+            text-align: left;
+        }
+        td {
+            border-bottom: 1px solid @table-header-color;
+        }
+        tr:hover td {
+            background-color: fadeout(@brand-color-lighter, 75%);
+        }
+        tr:last-child td {
+            border-bottom: 0;
+        }
+    }
+    tfoot {
+        td {
+            background-color: @table-header-color;
+            border-top: 1px solid @brand-color-darker;
+        }
+    }
+    .actions {
+        float: right;
+        text-align: right;
+        img {
+            vertical-align: middle;
+        }
+    }
+    td.actions, th.actions {
+        float: none;
+    }
+
+    tbody.togglable {
+        th:before {
+            content: url("@{icon-path}/blue/arr_1down.png");
+            margin-right: 3px;
+            vertical-align: middle;
+        }
+    }
+}

@@ -1,0 +1,136 @@
+.drag-and-drop { display: none; }
+.js .drag-and-drop {
+    border: 1px dotted #888;
+    display: block;
+    margin: 0 1em 0 0;
+    overflow: hidden;
+    padding: 1em;
+    position: relative;
+    text-align: center;
+
+    input[type=file] {
+        border: 0;
+        font-size: 5em;
+        margin: 0;
+        opacity: 0;
+        padding: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    &.hovered {
+        #gradient > .vertical(#ffe, #fec);
+        border-radius: 1em;
+        border-style: solid;
+        box-shadow: 0 0 5px #888;
+        text-shadow: 1px 1px 3px #fc8;
+    }
+}
+
+table.attribute_table {
+    border-collapse: collapse;
+
+    > tbody > tr > td {
+        border-top: thin solid #aaaaaa;
+        border-bottom: thin solid #aaaaaa;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    > tbody > tr.sub > td {
+        border-top: none;
+        border-bottom: none;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+    ul {
+        margin: 0px;
+    }
+    .sem_class_name .sem_class_edit {
+        display: none;
+    }
+    .sem_class_name:hover .sem_class_edit {
+        display: inline;
+    }
+    ul#sem_type_list > li {
+        height: 20px;
+    }
+    ul#sem_type_list > li .sem_type_delete, ul#sem_type_list > li .sem_type_edit {
+        display: none;
+    }
+    ul#sem_type_list > li:hover .sem_type_delete, ul#sem_type_list > li:hover .sem_type_edit {
+        display: inline;
+    }
+    div[container] {
+        display: inline-block;
+        width: 150px;
+        max-width: 150px;
+        overflow: hidden;
+        border: thin solid #cccccc;
+        vertical-align: top;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+    div[container] > h2 {
+        display: block;
+        width: 100%;
+        background-color: #dddddd;
+        font-size: 12px;
+        text-align: center;
+        margin: 0px;
+    }
+    div[container] > div.droparea {
+        min-height: 30px;
+        padding: 1px;
+    }
+    div[container] > div.droparea > div.plugin {
+        cursor: move;
+        border: thin solid #cccccc;
+        border-radius: 5px;
+        background-color: #dddddd;
+        margin: 5px;
+        margin-left: 7px;
+        margin-right: 7px;
+        display: inline-block;
+        min-width: 132px;
+        max-width: 132px;
+    }
+    div[container] > div.droparea > div > h2 {
+        display: block;
+        width: 100%;
+        background-color: #cccccc;
+        font-size: 12px;
+        text-align: center;
+        margin: 0px;
+    }
+    div[container] > div.droparea > div.deactivated {
+        opacity: 0.5;
+    }
+    div[container] > div.droparea > div.plugin .lock {
+        display: none;
+    }
+    div[container] > div.droparea > div.plugin.sticky .lock {
+        display: inline-block;
+    }
+    div[container]#nonactivated_plugins, div[container]#activated_plugins {
+        width: 49%;
+        max-width: 49%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    hr {
+        height: 1px;
+        color: #aaaaaa;
+        background-color: #aaaaaa;
+        border: none;
+    }
+    div[container]#deactivated_modules {
+        width: 99%;
+        max-width: 99%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    div[container]#deactivated_modules .plugin > div {
+        display: none;
+    }
+}
